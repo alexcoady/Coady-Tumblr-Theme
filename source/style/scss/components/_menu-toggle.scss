@@ -1,0 +1,40 @@
+.MenuToggle {
+  float: left;
+  width: 25px;
+  height: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+
+  .bar {
+    height: 1px;
+    background-color: $color-grey-light;
+    transition: background 150ms;
+    opacity: 1;
+
+    // Different colour on a modal window
+    .Navbar--modal & {
+      background: $color-white;
+    }
+
+    .Navbar--post & {
+      background: $color-grey-dark;
+    }
+  }
+}
+
+.mousemove .MenuToggle:hover .bar {
+  background: $color-yellow;
+}
+
+
+
+
+.TagMenuToggle {
+  font-family: $font-sans;
+  text-transform: uppercase;
+  font-size: 1.4em;
+}

@@ -1,0 +1,392 @@
+.Page {
+  background: $color-white;
+  height: 100%;
+}
+
+.Page-inner {
+  background: inherit;
+}
+
+.Page--index {}
+
+.Page--modal {
+
+  .Page-inner {
+    background: $color-grey-mid;
+    min-height: 100%;
+    overflow: hidden;
+    padding-top: 40px;
+  }
+  
+  color: $color-white;
+
+  svg {
+    fill: $color-white;
+  }
+}
+
+.Page--tagged {}
+
+.Page--search {}
+
+.Page--post {
+
+  padding-top: 3.75em;
+}
+
+.Page--textPost {
+
+  background: $color-grey-mid;
+  color: $color-white;
+
+  .Page-inner {
+    background: $color-grey-mid;
+  }
+  
+
+
+  .MenuToggle {
+    .bar {
+      background: $color-white;
+    }
+  }
+}
+
+.mousemove {
+  .Page--textPost {
+    .MenuToggle:hover .bar {
+      background: $color-yellow;
+    }
+  }
+}
+
+.Page-tags {
+
+  .Box { display: none; }
+
+  @media #{$mq-medium} {
+    .Box { display: block; }
+  }
+}
+
+
+
+/*
+INTERACTIONS
+*/
+
+.Page {
+
+  &.is-fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    z-index: 2000;
+  }
+
+  &.is-animating {
+    transition: transform .5s cubic-bezier(.27,.96,.69,.98);
+    // transition-duration: 20000ms;
+  }
+
+  &.is-entering {
+    // background: rgba(green, 0.5);
+    z-index: 5000;
+  }
+
+  &.is-leaving {
+    // background: rgba(red, 0.5);
+    z-index: 4000;
+    // opacity: 0.2;
+  }
+}
+
+.Page {
+
+  &.off-back {
+    z-index: 0;
+  }
+
+  // &.off-top {
+  //   transform: translate3d(0, -100%, 0);
+  // }
+
+  // &.off-right {
+  //   transform: translate3d(100%, 0, 0);
+  // }
+
+  // &.off-bottom {
+  //   transform: translate3d(0, 100%, 0);
+  // }
+
+  // &.off-left {
+  //   transform: translate3d(-100%, 0, 0);
+  // }
+
+  // &.off-nowhere {
+  //   transform: translate(0);
+  //   transition-duration: 0ms;
+  //   transition-delay: 500ms;
+  //   z-index: 1000;
+  // }
+
+  &.is-active {
+    // transform: translate(0);
+    // background: blue;
+  }
+}
+
+.Page-inner {
+  position: relative;
+}
+
+
+
+
+
+// .Page-inner {
+
+  // .Page-headerOpen {
+  //   transition: transform 1s, opacity 1s;
+  //   transform: translate3d(0px, 0px, 0px);
+  //   transition-delay: 0.5s;
+  //   opacity: 1;
+  // }
+  // .Navbar {
+  //   transition: transform 1s, opacity 1s;
+  //   transform: translate3d(0px, 0px, 0px);
+  //   transition-delay: 0.6s;
+  //   opacity: 1;
+  // }
+  // .Page-logo {
+  //   transition: transform 1s, opacity 1s;
+  //   transform: translate3d(0px, 0px, 0px);
+  //   transition-delay: 0.7s;
+  //   opacity: 1;
+  // }
+  // .Page-listing {
+  //   transition: transform 1s, opacity 1s;
+  //   transform: translate3d(0px, 0px, 0px);
+  //   transition-delay: 0.8s;
+  //   opacity: 1;
+  // }
+
+  // &.is-pushed {
+
+  //   .Page-headerOpen {
+  //     transform: translate3d(0px, 400px, 0px);
+  //     opacity: 0;
+  //   }
+  //   .Navbar {
+  //     transform: translate3d(0px, 400px, 0px);
+  //     opacity: 0;
+  //   }
+  //   .Page-logo {
+  //     transform: translate3d(0px, 400px, 0px);
+  //     opacity: 0;
+  //   }
+  //   .Page-listing {
+  //     transform: translate3d(0px, 400px, 0px);
+  //     opacity: 0;
+  //   }
+  // }
+// }
+
+
+$delay-default: 0s;
+
+.Page:not(.is-leaving) {
+
+  .Page-child {
+    opacity: 0;
+    transform: translate3d(0px, 250px, 0px);
+  }
+
+  &.off-top .Page-child {
+    transform: translate3d(0px, -250px, 0px);
+  }
+
+  &.off-right .Page-child {
+    transform: translate3d(250px, 0px, 0px);
+  }
+
+  &.off-bottom .Page-child {
+    transform: translate3d(0px, 250px, 0px);
+  }
+
+  &.off-left .Page-child {
+    transform: translate3d(-250px, 0px, 0px);
+  }
+
+  &.is-active .Page-child {
+    transform: translateY(0px);
+    transition-duration: .6s;
+    transition-delay: .3s;
+    opacity: 1;
+  }
+
+  .Page-child {
+
+    &:nth-child(1) {
+      transition-delay: $delay-default + 0.4s;
+    }
+
+    &:nth-child(2) {
+      transition-delay: $delay-default + 0.5s;
+    }
+
+    &:nth-child(3) {
+      transition-delay: $delay-default + 0.6s;
+    }
+
+    &:nth-child(4) {
+      transition-delay: $delay-default + 0.7s;
+    }
+
+    &:nth-child(5) {
+      transition-delay: $delay-default + 0.8s;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+//  *
+//  *
+//  * 
+//  */
+// .Page {
+
+//   background: $color-white;
+//   position: relative;
+
+//   &.is-fixed {
+//     position: fixed;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     overflow: hidden;
+
+//     z-index: 500;
+//   }
+
+//   &.is-animating {
+//     transition: transform 500ms cubic-bezier(.27,.96,.69,.98);
+//     transition-timing-function: ease-in
+//     // transition: transform 30000ms ease-in;
+//   }
+
+//   &.is-active {
+//   }
+
+//   // &.is-entering {
+//   //   background: rgba(green, 0.5);
+//   // }
+
+//   // &.is-leaving {
+//   //   background: rgba(red, 0.5);
+//   // }
+// }
+
+
+// .Page-inner {
+//   position: relative;
+//   overflow: hidden;
+// }
+
+
+// .Page-loading {
+  
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   display: block;
+//   width: 100%;
+//   height: 5px;
+//   background: $color-grey-light;
+
+//   .Page-loadingInner {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 5px;
+//     background: $color-yellow;
+//     transform: translate3d(-100%, 0px, 0px);
+//     transition: transform 1000ms;
+//   }
+
+//   &.is-active {
+
+//     top: auto;
+//     bottom: 0;
+
+//     .Page-loadingInner {
+//       transform: translate(0);
+//     }
+//   }
+// }
+
+
+// /* Defaults work... above overrides do NOT */
+// .Page {
+
+//   .Page-navbar {
+//     transform: translate3d(0px, 200px, 0px);
+//     transition: transform 550ms 500ms;
+//   }
+
+
+//   .Page-subview {
+//     transform: translate3d(0px, 300px, 0px);
+//     transition: transform 550ms 500ms;
+//   }
+// }
+
+
+// /**
+//  *
+//  *
+//  *  ACTIVE STATE
+//  */
+// .Page.is-active {
+
+//   .Page-navbar {
+//     transform: translate(0);
+//     // transition: transform 550ms 500ms;
+//   }
+
+//   .Page-subview {
+//     transform: translate(0);
+//     // transition: transform 550ms 500ms;
+//   }
+// }
