@@ -4,17 +4,10 @@
  *
  */
 .Chrome {
-
-  transition: transform .5s;
-
-  .overlay-active & {
-
-    transform: scale(.9);
-  }
+	height: 100%;
 }
 
 
-.Chrome-main {
-
-  height: 100%;
+.Chrome-page {
+	height: 100%;
 }

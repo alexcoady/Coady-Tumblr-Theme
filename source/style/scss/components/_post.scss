@@ -1,109 +1,15 @@
-.Post {
-  overflow: hidden;
-}
+.Post {}
 
-.Post-title {
-  text-align: center;
-  font-size: 2.8em;
-  line-height: 1.05em;
-  font-weight: 400;
-  line-height: 1.1em;
+.Post-title {}
 
-  @media #{$mq-medium} {
-    font-size: 3.75em;
-  }
+.Post-date {}
 
-  @media #{$mq-large} {
-    font-size: 5em;
-  }
-}
+.Post-photo {}
 
-.Post-date {
-  font-size: 1.25em;
-  font-weight: 400;
-  text-transform: uppercase;
-  text-align: center;
-  color: $color-grey-light;
-  font-family: $font-sans;
-}
+.Post-photo img {}
 
-.Post-photo {
-  overflow: hidden;
-}
+.Post-video iframe {}
 
-.Post-photo img {
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+.Post-content p {}
 
-.Post-video iframe {
-  margin: 0 auto;
-  max-width: 100%;
-  display: block;
-}
-
-
-.Post-content p {
-  font-size: 1.25em;
-  margin-bottom: 2em;
-  line-height: 1.4em;
-}
-
-.Post-content img {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-}
-
-.Post-tumblrActions {
-  background: $color-grey-pale;
-  padding-top: 7px;
-}
-
-
-
-
-
-/* Different post types */
-
-.Post--text {
-
-
-  p {
-
-    &:first-child {
-      font-size: 1.5em;
-      text-align: center;
-      font-style: italic;
-
-      strong {font-weight: 200;}
-    }
-
-    &:not(:first-child) {
-      margin-left: auto;
-      margin-right: auto;
-
-      @media #{$mq-medium} {
-        max-width: 85%;
-      }
-    }
-  }
-
-  a:not(.Menu-link) {
-    display: inline-block;
-    border-bottom: 1px solid;
-    line-height: 1em;
-    transition: color 150ms;
-  }
-}
-
-.mousemove {
-  .Post--text {
-    a:not(.Menu-link):hover {
-      color: $color-yellow;
-    }
-  }
-}
+.Post-content img {}
