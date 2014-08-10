@@ -20,7 +20,11 @@
   } 
 })();
 
+var PageHandler       = require('./components/page-handler'),
+    PluginHandler     = require('./components/plugin-handler');
 
-// start app
-// var PageHandler       = require('./components/page-handler'),
-//     PluginHandler     = require('./components/plugin-handler');
+var pluginHandler = new PluginHandler();
+
+pluginHandler.init();
+
+pluginHandler.afterPageEnter();

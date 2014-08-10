@@ -1,15 +1,38 @@
-.Post {}
+.Post {
+  height: 100%; // important
+  text-align: center;
+}
 
-.Post-title {}
+.Post-content {
+  background-color: $color-grey-mid;
+}
 
-.Post-date {}
+.Post-summary {
+  font-weight: bold;
+  font-size: 4em;
+  // font-family: $font-serif;
+}
 
-.Post-photo {}
+.Post-caption {
 
-.Post-photo img {}
+  overflow: hidden;
+  padding-top: 4em;
 
-.Post-video iframe {}
+  p {
+    margin-bottom: 2em;
+  }
+}
+
+.Post-date {
+  font-family: $font-serif;
+}
 
 .Post-content p {}
 
-.Post-content img {}
+.Post-content img {
+  display: block;
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}

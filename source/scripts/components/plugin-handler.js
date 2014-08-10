@@ -31,29 +31,29 @@ PluginHandler.prototype.init = function () {
   
   self.menuToggle     = new MenuToggle( self );
   
-  self.tagMenuToggle  = new MenuToggle( self );
+  // self.tagMenuToggle  = new MenuToggle( self );
 
-  self.searchToggle   = new SearchToggle( self );
+  // self.searchToggle   = new SearchToggle( self );
   
-  self.cinemaCarousel = new CinemaCarousel( self );
+  // self.cinemaCarousel = new CinemaCarousel( self );
   
-  self.thumbHandler   = new ThumbHandler( self );
+  // self.thumbHandler   = new ThumbHandler( self );
   
-  self.pjaxHijack     = new PjaxHijack( self );
+  // self.pjaxHijack     = new PjaxHijack( self );
   
-  self.introEffect    = new IntroEffect( self );
+  // self.introEffect    = new IntroEffect( self );
   
-  self.infiniteScroll = new InfiniteScroll( self );
+  // self.infiniteScroll = new InfiniteScroll( self );
 
-  self.gridHandler    = new GridHandler( self );
+  // self.gridHandler    = new GridHandler( self );
 
-  self.tagHandler     = new TagHandler( self );
+  // self.tagHandler     = new TagHandler( self );
 
-  self.closeHandler   = new CloseHandler( self );
+  // self.closeHandler   = new CloseHandler( self );
 
-  self.postHandler    = new PostHandler( self );
+  // self.postHandler    = new PostHandler( self );
   
-  self.loadingHandler = new LoadingHandler( self );
+  // self.loadingHandler = new LoadingHandler( self );
 };
 
 
@@ -61,21 +61,21 @@ PluginHandler.prototype.beforePageEnter = function ( page ) {
    
   var self = this;
 
-  self.loadingHandler.init();
+  // self.loadingHandler.init();
   
-  // self.loadingHandler.start();
+  // // self.loadingHandler.start();
 
-  // Initialise tag handler
-  self.tagHandler.init( null, page.el );
+  // // Initialise tag handler
+  // self.tagHandler.init( null, page.el );
 
-  // Initialise grid
-  self.gridHandler.init( null, page.el );
+  // // Initialise grid
+  // self.gridHandler.init( null, page.el );
 
-  // Intialise thumb hover 
-  self.thumbHandler.init( null, page.el );
+  // // Intialise thumb hover 
+  // self.thumbHandler.init( null, page.el );
 
-  // Bind a post
-  self.postHandler.init( null, page.el );
+  // // Bind a post
+  // self.postHandler.init( null, page.el );
 }
 
 
@@ -83,39 +83,39 @@ PluginHandler.prototype.afterPageEnter = function ( page ) {
   
   var self = this;
 
-  console.log( '> PluginHandler: afterPageEnter', page.prevURL );
+  // console.log( '> PluginHandler: afterPageEnter', page.prevURL );
 
   // self.loadingHandler.finish();
 
   // initialise menu toggle
-  self.menuToggle.init( '#NavMenu', '.MenuToggle');
+  self.menuToggle.init( '.Menu', '.Hamburger');
 
   // initialise menu toggle
-  self.tagMenuToggle.init( '#TagMenu', '.TagMenuToggle');
+  // self.tagMenuToggle.init( '#TagMenu', '.TagMenuToggle');
 
-  // initialise search toggle
-  self.searchToggle.init( null, page.el );
+  // // initialise search toggle
+  // self.searchToggle.init( null, page.el );
 
-  // initialise cinema carousel
-  self.cinemaCarousel.init( null, page.el );
+  // // initialise cinema carousel
+  // self.cinemaCarousel.init( null, page.el );
 
-  // Intiialise pjax hijack
-  self.pjaxHijack.init( null, page.el, self.isFirst );
+  // // Intiialise pjax hijack
+  // self.pjaxHijack.init( null, page.el, self.isFirst );
 
-  // Initialise intro effect
-  self.introEffect.init( null, page.el, self.isFirst );
+  // // Initialise intro effect
+  // self.introEffect.init( null, page.el, self.isFirst );
 
-  // Initialise infinite scroll
-  self.infiniteScroll.init( null, page.el );
+  // // Initialise infinite scroll
+  // self.infiniteScroll.init( null, page.el );
 
-  // Bind any close buttons
-  self.closeHandler.init( null, page.el, page.prevURL );
+  // // Bind any close buttons
+  // self.closeHandler.init( null, page.el, page.prevURL );
 
-  // Bind a post
-  self.postHandler.init( null, page.el );
+  // // Bind a post
+  // self.postHandler.init( null, page.el );
 
-  // Bind APIs
-  self.bindAPIs();
+  // // Bind APIs
+  // self.bindAPIs();
 
   if ( self.isFirst ) self.isFirst = false;
 };

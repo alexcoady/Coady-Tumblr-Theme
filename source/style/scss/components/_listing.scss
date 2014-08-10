@@ -1,0 +1,16 @@
+.Listing {
+  overflow: hidden;
+}
+
+.Listing-item {
+  width: 50%;
+  float: left;
+  margin-bottom: 1em;
+
+  &:nth-child(2n+1) {
+    padding-right: .5em;
+  }
+  &:nth-child(2n) {
+    padding-left: .5em;
+  }
+}

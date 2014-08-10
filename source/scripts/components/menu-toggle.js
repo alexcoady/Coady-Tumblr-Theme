@@ -145,7 +145,7 @@ MenuToggle.prototype.open = function () {
   self.el.addEventListener( transitionend, _handleTransitionEnd );
   
   self.el.addClass( 'is-active' );
-  self.htmlEl.addClass( 'overlay-active' );
+  self.htmlEl.addClass( 'menu-active' );
 };
 
 
@@ -168,7 +168,7 @@ MenuToggle.prototype.close = function () {
   self.el.addEventListener( transitionend, _handleTransitionEnd );
 
   self.el.removeClass( 'is-active' );
-  self.htmlEl.removeClass( 'overlay-active' );
+  self.htmlEl.removeClass( 'menu-active' );
 };
 
 
