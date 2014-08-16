@@ -1,6 +1,6 @@
-# Persol Tumblr
+# Coady tumblr theme
 
-Staging link: [http://prototypes.stinkdigital.com/persol-tumblr/](http://prototypes.stinkdigital.com/persol-tumblr/)
+Staging link: [http://coadycode.tumbr.com](http://coadycode.tumbr.com)
 
 ## Project setup
 
