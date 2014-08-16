@@ -1,6 +1,6 @@
 # Coady tumblr theme
 
-Staging link: [http://coadycode.tumbr.com](http://coadycode.tumbr.com)
+Staging link: [http://coadycode.tumblr.com](http://coadycode.tumblr.com)
 
 ## Project setup
 
