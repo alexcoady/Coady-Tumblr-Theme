@@ -1,6 +1,6 @@
 .Preview {
   display: block; // its a link
-  background: red;
+  background: black;
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -21,20 +21,46 @@
   background-color: blue;
   background-size: cover;
   z-index: 50;
+
+  opacity: .6;
 }
 
 .Preview-content {
   z-index: 100;
 }
 
-.Preview-type {
+.Preview-title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform: translate3d(0px, -50%, 0);
+
+  font-weight: 600;
+  font-size: 2em;
+}
+
+.Preview-details {
   display: none;
+  background: blue;
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0.3em .5em;
-  background: lighten($color-grey-light, 5%);
-  color: $color-grey-dark;
+  width: 100%;
+  height: 2em;
+  text-align: right;
+  line-height: 2em;
+  padding-right: .5em;
+
+  transform-origin: 0 0;
+  transform: translate3d(100%, 0,0) rotate(-90deg) translate3d(-100%, -2em,0);
+}
+
+.Preview-type {
+  display: none;
+  background: blue;
+  color: $color-grey-light;
   font-weight: 600;
 
   .Preview--tag--work &.Preview-type--work {

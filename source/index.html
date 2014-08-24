@@ -69,9 +69,13 @@
                                             <a href="{Permalink}" class="Preview Preview--{PostType} {block:RebloggedFrom} Preview--reblogged{/block:RebloggedFrom} {block:HasTags}{block:Tags} Preview--tag--{Tag}{/block:Tags}{/block:HasTags}">
                                                 <div class="Preview-inner Preview-background" {block:Photo}style="background-image: url('{PhotoURL-500}')"{/block:Photo}{block:Video}{block:VideoThumbnail}style="background-image: url('{VideoThumbnailURL}')"{/block:VideoThumbnail}{/block:Video} ></div>
                                                 <div class="Preview-inner Preview-content">
-                                                    {block:Caption}<h4 class="Preview-title">{PlaintextCaption}</h4>{/block:Caption}
-                                                    <span class="Preview-type Preview-type--work">Work</span>
-                                                    <span class="Preview-type Preview-type--blog">Blog</span>
+                                                    {block:Caption}<h4 class="Preview-title Island">{PlaintextCaption}</h4>{/block:Caption}
+                                                    <div class="Preview-details">
+                                                      <time class="Preview-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}">{ShortMonth} {DayOfMonth}{DayOfMonthSuffix} {ShortYear}</time>
+                                                      <span class="Preview-type Preview-type--work">Work</span>
+                                                      <span class="Preview-type Preview-type--blog">Blog</span>
+                                                    </div>
+                                                    
                                                 </div>
                                             </a>
                                         </div>
@@ -142,10 +146,6 @@
                         </div>
                         {/block:Posts}
                         {/block:PermalinkPage}
-
-
-
-
                     </div>
                 </div>
             </div>
