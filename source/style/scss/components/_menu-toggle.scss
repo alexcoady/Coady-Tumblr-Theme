@@ -14,27 +14,5 @@
     background-color: $color-grey-light;
     transition: background 150ms;
     opacity: 1;
-
-    // Different colour on a modal window
-    .Navbar--modal & {
-      background: $color-white;
-    }
-
-    .Navbar--post & {
-      background: $color-grey-dark;
-    }
   }
-}
-
-.mousemove .MenuToggle:hover .bar {
-  background: $color-yellow;
-}
-
-
-
-
-.TagMenuToggle {
-  font-family: $font-sans;
-  text-transform: uppercase;
-  font-size: 1.4em;
 }
