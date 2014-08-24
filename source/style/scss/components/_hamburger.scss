@@ -16,7 +16,7 @@
     height: 3px;
     background: $color-grey-light;
 
-    transition: transform 150ms;
+    transition: transform .35s .15s;
   }
 }
 
@@ -25,11 +25,11 @@
   span {
 
     &:nth-child(1) {
-      transform: rotate(-45deg) scale(.5, 1) translate3d(-17px, -4px, 0);
+      transform: rotate(-45deg) scale(.5, 1) translate3d(-21px, -4px, 0);
     }
     &:nth-child(2) {}
     &:nth-child(3) {
-      transform: rotate(45deg) scale(.5, 1) translate3d(-17px, 4px, 0);
+      transform: rotate(45deg) scale(.5, 1) translate3d(-21px, 4px, 0);
     }
   }
 }
