@@ -24,23 +24,25 @@ PostHandler.prototype.init = function ( selector, containerEl ) {
   if ( !self.el ) return;
   // --------------------
 
-  self._parseTitle();
+  self._parseSummary();
   self._getNextPost();
 };
 
 
 
-PostHandler.prototype._parseTitle = function () {
+PostHandler.prototype._parseSummary = function () {
 
   var self = this,
       titleEl;
 
-  titleEl = self.el.querySelector('.Post-title');
+  titleEl = self.el.querySelector('.Post-summary');
 
   if ( !titleEl ) return;
   // --------------------
 
   titleEl.innerHTML = utils.getFirstLine( titleEl );
+
+  console.log('summary updated', titleEl.innerHTML);
 };
 
 
