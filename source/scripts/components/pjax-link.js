@@ -72,13 +72,13 @@ PjaxLink.prototype._setContainer = function () {
 
   var self = this;
 
-  self.containerSelector = '#Chrome-main';
+  self.containerSelector = '#Chrome-page';
 
   self.containerEl = document.querySelector( self.containerSelector );
   
   if ( !self.containerEl ) {
     
-    self.containerEl = document.querySelector( '#Chrome-main' );
+    self.containerEl = document.querySelector( '#Chrome-page' );
   }
 
   return self;
@@ -103,46 +103,27 @@ PjaxLink.prototype.loadContent = function ( force ) {
 
     // Find correlating container in new content
     tempContainer = tempEl.querySelector( self.containerSelector );
-    
+
     if ( !tempContainer || !tempContainer.innerHTML ) return;
     // ------------------------------------------------------
 
     newPage = new Page( tempContainer.firstElementChild, self.href );
 
+    console.log('clicked link');
     self.pjaxHijack.pageHandler.flipPages( newPage, function () {
 
       self.pjaxHijack.afterCallback();
     });
   }
 
-  // handle exceptions
-  var domain = 'tumblr.com';
-  var baseUrlIndex = self.href.indexOf( domain ) + domain.length + 1;
-  var pageSlug = self.href.substring( baseUrlIndex ).split( '/' )[ 0 ];
-  switch( pageSlug ){
-    case 'home':
-      self.href = self.href.substr( 0, baseUrlIndex );
-      break;
-    case 'archive':
-      window.location.href = self.href;
-      return;
-      // ------------------------------------------------------
-      break;
-    case 'follow':
-      var tumblrId = self.href.substring( self.href.indexOf( '//' ) + 2 ).split( '.' )[ 0 ];
-      window.location.href = 'https://www.tumblr.com/follow/' + tumblrId;
-      return;
-      // ------------------------------------------------------
-      break;
-  }
-
   if( !Modernizr.csstransitions ){
     window.location.href = self.href;
     return;
-    // ------------------------------------------------------
+    // ----
   }
 
-  if( force || document.location.href !== self.href ){
+  if ( force || document.location.href !== self.href ) {
+    
     self._getHTML( _handleHTML );
   }
 }
@@ -156,7 +137,7 @@ PjaxLink.prototype.updateUrl = function () {
     window.history.pushState(null, "Urrrr", self.href);
     
     // tracking
-    if ( ga ) ga( 'send', 'pageview', document.location.pathname );
+    if ( window.ga ) ga( 'send', 'pageview', document.location.pathname );
   }
 };
 

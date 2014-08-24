@@ -20,6 +20,8 @@ function PjaxHijack ( pluginHandler ) {
   ];
 
   self.pageHandler = PageHandler.getInstance();
+
+  console.log(self);
 }
 
 PjaxHijack.prototype.init = function ( selector, containerEl, isFirst ) {

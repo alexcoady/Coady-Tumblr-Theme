@@ -53,7 +53,7 @@ PluginHandler.prototype.afterPageEnter = function ( page ) {
   
   var self = this;
 
-  console.log( '> PluginHandler: afterPageEnter', page.prevURL );
+  console.log( '> PluginHandler: afterPageEnter' );
 
   self.loadingHandler.finish();
 
@@ -73,8 +73,6 @@ PluginHandler.prototype.afterPageEnter = function ( page ) {
 PluginHandler.prototype.beforePageLeave = function () {
    
   var self = this;
-
-  self.introEffect.destroy();
 }
 
 

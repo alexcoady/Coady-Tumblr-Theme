@@ -10,6 +10,14 @@
 
 .Chrome-page {
 	height: 100%;
+
+  transform: translate3d(0, 0, 0);
+
+  transition: transform .35s; 
+
+  html.menu-active & {
+    transform: translate3d(300px, 0, 0);
+  }
 }
 
 .Chrome-menu {

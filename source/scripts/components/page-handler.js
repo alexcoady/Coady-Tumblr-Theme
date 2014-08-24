@@ -33,6 +33,8 @@ PageHandler.prototype.init = function ( selector, options ) {
   if ( !self.el ) return;
   // --------------------
 
+  console.log('> PageHandler: init', self);
+
   if ( self.el.firstElementChild ) {
     self.flipPages( new Page( self.el.firstElementChild, document.URL ) );
   }
@@ -47,6 +49,8 @@ PageHandler.prototype.flipPages = function ( newPage, cb ) {
       leaveOptions = {},
       newPage = newPage || self.lastNonModal;
 
+  console.log('flipping pages', self.el);
+
   enterOptions.noTransition = false;
   leaveOptions.noTransition = false;
 
@@ -55,19 +59,7 @@ PageHandler.prototype.flipPages = function ( newPage, cb ) {
     window.location.replace('/');
   }
 
-  if ( self.currentPage && ( newPage.el.hasClass('Page--modal') || newPage.el.hasClass('Page--textPost') ) ) {
-
-    // leaveOptions.directionClass = 'off-nowhere';
-    leaveOptions.directionClass = 'off-back';
-    enterOptions.directionClass = 'off-bottom';
-
-  } else if ( self.currentPage && ( self.currentPage.el.hasClass('Page--modal') || self.currentPage.el.hasClass('Page--textPost') ) ) {
-
-    leaveOptions.directionClass = 'off-bottom';
-    enterOptions.directionClass = 'off-back';
-    // enterOptions.directionClass = 'off-nowhere';
-
-  } else if ( self.currentPage && self.currentPage.el.hasClass('Page--post') ) {
+  if ( self.currentPage && self.currentPage.el.hasClass('Page--post') ) {
 
     if ( newPage.el.hasClass('Page--post') ) {
 
@@ -102,11 +94,7 @@ PageHandler.prototype.flipPages = function ( newPage, cb ) {
     self.currentPage.leave( leaveOptions );
   }
 
-  if ( !newPage.el.hasClass('Page--modal') && !newPage.el.hasClass('Page--textPost') ) {
-
-    self.lastNonModal = newPage;
-    // console.log('Setting lastNonModal', self.lastNonModal.URL);
-  }
+  self.lastNonModal = newPage;
 
   newPage.prevURL = self.lastNonModal ? self.lastNonModal.URL : '/';
 
@@ -126,10 +114,6 @@ PageHandler.prototype.flipPages = function ( newPage, cb ) {
     if ( _.isFunction(cb) ) cb();
   });
 };
-
-
-
-
 
 
 PageHandler._instance = undefined;
