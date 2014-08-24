@@ -14,24 +14,6 @@ function _Thumb ( el ) {
 
   self.el = el;
   self.isActive = false;
-
-  // self.mouseenterDelay = 1000;
-
-  // self._handleMouseenter = function ( ev ) {
-
-  //   self.enterTimeout = setTimeout(function () {
-
-  //     self._muteOthers( true );
-    
-  //   }, self.mouseenterDelay);
-  // };
-
-  // self._handleMouseleave = function ( ev ) {
-
-  //   if ( self.enterTimeout ) clearTimeout( self.enterTimeout );
-
-  //   self._muteOthers( false );
-  // };
 }
 
 
@@ -55,147 +37,19 @@ _Thumb.prototype.init = function () {
 };
 
 
-// _Thumb.prototype._tearDown = function ( bind ) {
-
-//   var self = this;
-
-//   self._bind( false );
-// };
-
-
-
-// _Thumb.prototype._bind = function ( bind ) {
-
-//   var self = this;
-
-//   if ( !self.el ) return;
-//   // --------------------
-
-//   if ( bind ) {
-
-//     self.el.addEventListener( 'mouseenter', self._handleMouseenter );
-//     self.el.addEventListener( 'mouseleave', self._handleMouseleave );
-
-//   } else {
-
-//     self.el.removeEventListener( 'mouseenter', self._handleMouseenter );
-//     self.el.removeEventListener( 'mouseleave', self._handleMouseleave );
-//   }
-// };
-
-
 _Thumb.prototype._parseTitle = function () {
 
   var self = this,
       titleEl,
       tempTitle;
 
-  titleEl = self.el.querySelector('.Thumb-title');
+  titleEl = self.el.querySelector('.Preview-title');
 
   if ( !titleEl || !titleEl.innerHTML ) return;
   // ------------------------------------------
 
   titleEl.innerHTML = utils.getFirstLine( titleEl );
 };
-
-
-_Thumb.prototype.checkPosition = function ( rangeTop, rangeBottom, noTrans ) {
-
-  var self = this,
-      rect;
-
-  if ( self.isActive ) return;
-  // -------------------------
-
-  rect = self.el.getBoundingClientRect();
-  
-  if ( rect.top >= rangeTop && rect.top <= rangeBottom ) {
-
-    if ( noTrans ) self.el.addClass('no-trans');
-
-    self.el.addClass('is-active');
-    self.isActive = true;
-    
-    return true;
-  }
-  
-  return false;
-};
-
-
-/**
- *  Mute or unmute every thumb except for this one
- * 
- *  @private
- *  @method _muteOthers
- *  @param {Boolean} mute Flag as whether to mute or not
- *  @return {Void}
- */
-// _Thumb.prototype._muteOthers = function ( mute ) {
-
-//   var self = this,
-//       items = _Thumb.others.slice(),
-//       index = items.indexOf(self);
-
-//   if ( index < 0 ) return;
-//   // ----------------------
-
-//   items.splice( index, 1 );
-//   _Thumb._mute( items, mute );
-// };
-
-
-/**
- *  Mute or unmute this thumb
- * 
- *  @private
- *  @method _mute
- *  @param {Boolean} mute Flag as whether to mute or not
- *  @return {Void}
- */
-// _Thumb.prototype._mute = function ( mute ) {
-
-//   mute ? this.el.addClass('is-muted') : this.el.removeClass('is-muted');
-// };
-
-
-/**
- *  Mute or unmute a collection of thumb items
- * 
- *  @private
- *  @static
- *  @method _mute
- *  @param {Array} items Items to mute or unmute
- *  @param {Boolean} mute Flag as whether to mute or not
- *  @return {Void}
- */
-// _Thumb._mute = function ( items, mute ) {
-
-//   var count = items.length;
-//   while ( count-- ) {
-
-//     items[count]._mute( mute );
-//   }
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -219,7 +73,6 @@ function ThumbHandler ( pluginHandler ) {
 
   self.pluginHandler = pluginHandler;
   self.items = [];
-  self.inactiveItems = [];
   self.bottomOffset = -200; // 0
 
   function _handleScroll ( ev ) {
@@ -250,59 +103,7 @@ ThumbHandler.prototype.init = function ( selector, containerEl ) {
   self.el = containerEl && containerEl instanceof Element ? containerEl : document;
 
   self._setItems( selector );
-  self._bindScroll( true );
-  self.onGridUpdated();
 };
-
-
-ThumbHandler.prototype._bindScroll = function ( bind ) {
-
-  var self = this;
-
-  if ( bind && self.pageEl ) {
-
-    window.addEventListener( 'scroll', self._handleScroll );
-
-  } else {
-
-    window.removeEventListener( 'scroll', self._handleScroll );
-  }
-  
-};
-
-
-ThumbHandler.prototype._scrollPage = function ( ev ) {
-
-  var self = this,
-      rangeTop,
-      rangeBottom;
-
-  rangeTop = 0 + self.bottomOffset;
-  rangeBottom = window.innerHeight + self.bottomOffset;
-
-  self._checkItemsPositions( rangeTop, rangeBottom, false );
-};
-
-
-ThumbHandler.prototype._checkItemsPositions = function ( rangeTop, rangeBottom, noTrans ) {
-
-  var self = this,
-      count = self.inactiveItems.length,
-      rangeTop = rangeTop || 0 + self.bottomOffset,
-      rangeBottom = rangeBottom || window.innerHeight + self.bottomOffset;
-
-  if ( noTrans ) {
-    rangeTop -= self.bottomOffset;
-    rangeBottom -= self.bottomOffset;
-  }
-
-  while ( count-- ) {
-
-    if (self.inactiveItems[count].checkPosition( rangeTop, rangeBottom, noTrans )) {
-      self.inactiveItems.splice( count, 1 );
-    }
-  }
-}
 
 
 ThumbHandler.prototype._tearDown = function () {
@@ -310,8 +111,6 @@ ThumbHandler.prototype._tearDown = function () {
   var self = this;
 
   self.items = [];
-  self.inactiveItems = [];
-  self._bindScroll( false );
 };
 
 
@@ -324,7 +123,7 @@ ThumbHandler.prototype.addItems = function ( wrappedItems ) {
 
   while ( count-- ) {
 
-    tempEl = wrappedItems[count].querySelector('.Thumb');
+    tempEl = wrappedItems[count].querySelector('.Preview');
 
     if ( !tempEl ) continue;
     // ---------------------
@@ -332,18 +131,9 @@ ThumbHandler.prototype.addItems = function ( wrappedItems ) {
     tempThumb = new _Thumb( tempEl );
     tempThumb.init();
     self.items.push( tempThumb );
-    self.inactiveItems.push( tempThumb );
   }
 
   _Thumb.others = self.items;
-};
-
-
-ThumbHandler.prototype.onGridUpdated = function () {
-
-  var self = this;
-
-  self._checkItemsPositions( null, null, false );
 };
 
 
@@ -358,7 +148,7 @@ ThumbHandler.prototype.onGridUpdated = function () {
 ThumbHandler.prototype._setItems = function ( selector ) {
 
   var self = this,
-      els = self.el.querySelectorAll( selector || '.Thumb' ),
+      els = self.el.querySelectorAll( selector || '.Preview' ),
       count = els.length,
       tempThumb;
 
@@ -367,7 +157,6 @@ ThumbHandler.prototype._setItems = function ( selector ) {
     tempThumb = new _Thumb( els[count] );
     tempThumb.init();
     self.items.push( tempThumb );
-    self.inactiveItems.push( tempThumb );
   }
 
   _Thumb.others = self.items;

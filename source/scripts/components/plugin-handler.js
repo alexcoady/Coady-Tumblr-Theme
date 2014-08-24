@@ -33,6 +33,8 @@ PluginHandler.prototype.init = function () {
   self.postHandler    = new PostHandler( self );
   
   self.loadingHandler = new LoadingHandler( self );
+
+  self.thumbHandler   = new ThumbHandler( self );
 };
 
 
@@ -43,6 +45,8 @@ PluginHandler.prototype.beforePageEnter = function ( page ) {
   self.loadingHandler.init();
   
   self.loadingHandler.start();
+
+  self.thumbHandler.init( null, page.el );
 
   // Bind a post
   self.postHandler.init( null, page.el );

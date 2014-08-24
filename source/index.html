@@ -69,8 +69,7 @@
                                             <a href="{Permalink}" class="Preview Preview--{PostType} {block:RebloggedFrom} Preview--reblogged{/block:RebloggedFrom} {block:HasTags}{block:Tags} Preview--tag--{Tag}{/block:Tags}{/block:HasTags}">
                                                 <div class="Preview-inner Preview-background" {block:Photo}style="background-image: url('{PhotoURL-500}')"{/block:Photo}{block:Video}{block:VideoThumbnail}style="background-image: url('{VideoThumbnailURL}')"{/block:VideoThumbnail}{/block:Video} ></div>
                                                 <div class="Preview-inner Preview-content">
-                                                    <!--{block:Title}<h4 class="Preview-title">{Title}</h4>{/block:Title}-->
-                                                    <!--{block:Caption}<h4 class="Preview-title">{PlaintextCaption}</h4>{/block:Caption}-->
+                                                    {block:Caption}<h4 class="Preview-title">{PlaintextCaption}</h4>{/block:Caption}
                                                     <span class="Preview-type Preview-type--work">Work</span>
                                                     <span class="Preview-type Preview-type--blog">Blog</span>
                                                 </div>
