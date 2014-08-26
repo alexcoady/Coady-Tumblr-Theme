@@ -32,8 +32,6 @@
 
   background-size: cover;
   background-position: center center; 
-
-  filter: blur(2px);
 }
 
 .Section-content {
@@ -51,6 +49,9 @@
 
 .Section--image {
 
+  .Section-background {
+    filter: blur(2px);
+  }
 }
 
 .Section--color {

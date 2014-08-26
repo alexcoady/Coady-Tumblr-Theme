@@ -1,14 +1,11 @@
 var utils             = require('./utils'),
     MenuToggle        = require('./menu-toggle'),
-    SearchToggle      = require('./search-toggle'),
-    CinemaCarousel    = require('./cinema-carousel'),
     ThumbHandler      = require('./thumb-handler'),
     PjaxHijack        = require('./pjax-hijack'),
     PageHandler       = require('./page-handler'),
-    TagHandler        = require('./tag-handler'),
-    CloseHandler      = require('./close-handler'),
     PostHandler       = require('./post-handler'),
-    LoadingHandler    = require('./loading-handler');
+    LoadingHandler    = require('./loading-handler'),
+    ColorFun          = require('./color-fun');
 
 
 function PluginHandler () {
@@ -35,6 +32,8 @@ PluginHandler.prototype.init = function () {
   self.loadingHandler = new LoadingHandler( self );
 
   self.thumbHandler   = new ThumbHandler( self );
+
+  self.colorFun       = new ColorFun( self );
 };
 
 
@@ -69,6 +68,9 @@ PluginHandler.prototype.afterPageEnter = function ( page ) {
 
   // Bind a post
   self.postHandler.init( null, page.el );
+
+  // Bind colour nonsense
+  self.colorFun.init( null, page.el );
 
   if ( self.isFirst ) self.isFirst = false;
 };

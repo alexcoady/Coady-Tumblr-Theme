@@ -257,6 +257,21 @@ function rangeFunc ( inputFrom, inputTo, outputFrom, outputTo ) {
 }
 
 
+function getOffset ( el ) {
+
+  var bodyRect, elemRect, offset;
+
+  bodyRect = document.body.getBoundingClientRect();
+  elemRect = el.getBoundingClientRect();
+  offset = {
+    top: elemRect.top - bodyRect.top,
+    left: elemRect.left - bodyRect.left
+  };
+
+  return offset;
+}
+
+
 module.exports = {
   preventDefault: preventDefault,
   getTransitionEnd: getTransitionEnd,
@@ -264,5 +279,6 @@ module.exports = {
   getWindowWidth: getWindowWidth,
   getWindowHeight: getWindowHeight,
   getFirstLine: getFirstLine,
-  rangeFunc: rangeFunc
+  rangeFunc: rangeFunc,
+  getOffset: getOffset
 };
