@@ -43,7 +43,16 @@ ColorFun.prototype._bindMouseover = function ( bind ) {
 
   var self = this;
 
-  if ( bind ) self.el.addEventListener( 'mousemove', self._handleMouseover );
+  if ( bind ) {
+    
+    self.el.addEventListener( 'mousemove', self._handleMouseover );
+    self.el.addEventListener( 'touchmove', self._handleMouseover );
+  
+  } else {
+
+    self.el.removeEventListener( 'mousemove', self._handleMouseover );
+    self.el.removeEventListener( 'touchmove', self._handleMouseover );
+  }
 }
 
 ColorFun.prototype.updateColor = function ( x, y ) {
