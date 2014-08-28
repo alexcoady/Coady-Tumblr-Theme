@@ -16,7 +16,7 @@
   transition: transform .35s; 
 
   html.menu-active & {
-    transform: translate3d(300px, 0, 0);
+    transform: translate3d($width-menu, 0, 0);
   }
 }
 
