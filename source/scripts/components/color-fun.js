@@ -5,10 +5,47 @@ function ColorFun ( pluginHandler ) {
   var self = this;
 
   self.pluginHandler = pluginHandler;
+  self.ongoingTouches = [];
 
   self._handleMouseover = function ( ev ) {
 
     self.updateColor( ev.x, ev.y );
+  };
+
+  self._handleTouchMove = function ( ev ) {
+
+    // ev.preventDefault();
+
+    var touches = ev.changedTouches,
+        touchCount = touches.length,
+        i = 0;
+
+    for ( i; i < touchCount; i += 1 ) {
+
+      self.ongoingTouches.push( touches[i] );
+      
+      self.updateColor( touches[i].pageX, touches[i].pageY );
+    }
+  };
+
+  self._handleTouchStart = function (ev) {
+
+    var regionWidth;
+
+    // ev.preventDefault();
+
+    regionWidth = window.innerWidth / brandsEl.length;
+
+    var touches = ev.changedTouches,
+        touchCount = touches.length,
+        i = 0;
+
+    for ( i; i < touchCount; i += 1 ) {
+
+      self.ongoingTouches.push( touches[i] );
+
+      self.updateColor( touches[i].pageX, touches[i].pageY );
+    }
   };
 }
 
@@ -46,12 +83,14 @@ ColorFun.prototype._bindMouseover = function ( bind ) {
   if ( bind ) {
     
     self.el.addEventListener( 'mousemove', self._handleMouseover );
-    self.el.addEventListener( 'touchmove', self._handleMouseover );
+    self.el.addEventListener( 'touchmove', self._handleTouchMove, false );
+    self.el.addEventListener( 'touchstart', self._handleTouchStart, false );
   
   } else {
 
     self.el.removeEventListener( 'mousemove', self._handleMouseover );
-    self.el.removeEventListener( 'touchmove', self._handleMouseover );
+    self.el.removeEventListener( 'touchmove', self._handleTouchMove, false );
+    self.el.removeEventListener( 'touchstart', self._handleTouchStart, false );
   }
 }
 
