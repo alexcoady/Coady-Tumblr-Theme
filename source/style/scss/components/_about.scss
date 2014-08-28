@@ -1,0 +1,13 @@
+.About {}
+
+.About-title {
+  color: $color-grey-dark;
+  font-size: 1.4em;
+  text-align: center;
+
+  a {
+    border-bottom: 1px solid;
+
+    &:hover { color: blue; }
+  }
+}

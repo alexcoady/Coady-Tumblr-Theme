@@ -73,7 +73,6 @@ ColorFun.prototype.init = function ( selector, container ) {
   self.rangeR = utils.rangeFunc( 0, width, 0, 230 );
   self.rangeG = utils.rangeFunc( 0, width, 100, 0 );
   self.rangeB = utils.rangeFunc( 0, height, 0, 230 );
-  self.rangeA = utils.rangeFunc( 0, height, 0, 1 );
 };
 
 ColorFun.prototype._bindMouseover = function ( bind ) {
@@ -97,17 +96,15 @@ ColorFun.prototype._bindMouseover = function ( bind ) {
 ColorFun.prototype.updateColor = function ( x, y ) {
 
   var self = this,
-      r,g,b,a,offset;
+      r,g,b,offset;
 
   offset = utils.getOffset( self.el );
 
   r = self.rangeR( x - offset.left ).toFixed(0);
   g = self.rangeG( x - offset.left ).toFixed(0);
   b = self.rangeB( y - offset.top ).toFixed(0);
-  a = self.rangeA( y - offset.top ).toFixed(2);
-  a = 1;
 
-  self.bgEl.style.backgroundColor = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + a + ')';
+  self.bgEl.style.backgroundColor = 'rgba(' + r + ', ' + g + ', ' + b + ', 1)';
 }
 
 
