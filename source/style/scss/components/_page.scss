@@ -6,6 +6,7 @@
 .Page-inner {
   height: 100%;
   position: relative;
+  background: black;
 }
 
 .Page-header {
@@ -51,6 +52,8 @@
     overflow: hidden;
 
     z-index: 2000;
+
+    background: pink;
   }
 
   &.is-animating {
