@@ -72,6 +72,9 @@ PluginHandler.prototype.afterPageEnter = function ( page ) {
   // Bind colour nonsense
   self.colorFun.init( null, page.el );
 
+  // Rebind 3rd party APIs
+  self.bindAPIs();
+
   if ( self.isFirst ) self.isFirst = false;
 };
 
@@ -80,6 +83,28 @@ PluginHandler.prototype.beforePageLeave = function () {
    
   var self = this;
 }
+
+
+PluginHandler.prototype.bindAPIs = function () {
+  
+  var self = this,
+      postId;
+  
+  try {
+
+    FB.XFBML.parse(); 
+    twttr.widgets.load();
+
+    postId = utils.getPostId( window.location.pathname );
+
+    if ( postId ) {
+
+      Tumblr.LikeButton.get_status_by_post_ids([postId]);
+    }
+  
+  } catch (ex) {}
+};
+
 
 
 PluginHandler._instance = undefined;
