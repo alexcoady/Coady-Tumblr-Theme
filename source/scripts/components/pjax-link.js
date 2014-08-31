@@ -109,7 +109,6 @@ PjaxLink.prototype.loadContent = function ( force ) {
 
     newPage = new Page( tempContainer.firstElementChild, self.href );
 
-    console.log('clicked link');
     self.pjaxHijack.pageHandler.flipPages( newPage, function () {
 
       self.pjaxHijack.afterCallback();

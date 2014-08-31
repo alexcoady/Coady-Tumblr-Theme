@@ -41,8 +41,6 @@ PostHandler.prototype._parseSummary = function () {
   // --------------------
 
   titleEl.innerHTML = utils.getFirstLine( titleEl );
-
-  console.log('summary updated', titleEl.innerHTML);
 };
 
 

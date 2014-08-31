@@ -33,8 +33,6 @@ PageHandler.prototype.init = function ( selector, options ) {
   if ( !self.el ) return;
   // --------------------
 
-  console.log('> PageHandler: init', self);
-
   if ( self.el.firstElementChild ) {
     self.flipPages( new Page( self.el.firstElementChild, document.URL ) );
   }
@@ -48,8 +46,6 @@ PageHandler.prototype.flipPages = function ( newPage, cb ) {
       enterOptions = {},
       leaveOptions = {},
       newPage = newPage || self.lastNonModal;
-
-  console.log('flipping pages', self.el);
 
   enterOptions.noTransition = false;
   leaveOptions.noTransition = false;
