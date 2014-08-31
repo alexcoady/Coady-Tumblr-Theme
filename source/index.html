@@ -53,7 +53,7 @@
                             <div class="Section Section--blue Section--border ColorFun">
                                 <div class="Section-inner">
                                     <div class="Section-background ColorFun-background"></div>
-                                    <div class="Section-content">
+                                    <div class="Section-content Island">
                                         
                                         {block:TagPage}<h1 class="Page-heading Channel Channel--small">{Tag}</h1>{/block:TagPage}
                                     
@@ -160,8 +160,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 {/block:Caption}
+
+                                <!-- POST PAGINATION -->
+                                {block:PermalinkPagination}
+                                {block:PreviousPost}
+                                <div class="Post-prevPost">
+                                    <a class="Island Island--xLarge PostPagination PostPagination--prev Wrapper" href="{PreviousPost}">
+                                        <div class="Wrapper-inner">
+                                            <span class="PostPagination-title">{lang:Next post}</span>
+                                            <h4 class="PostPagination-postTitle">{lang:Next post}</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                                {/block:PreviousPost}
+                                {/block:PermalinkPagination} 
                             </div>
                         </div>
                         {/block:Posts}
@@ -170,6 +183,14 @@
                 </div>
             </div>
         </div>
+
+        <script>window.twttr = (function (d, s, id) {
+          var t, js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+          return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+        }(document, "script", "twitter-wjs"));</script>
             
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

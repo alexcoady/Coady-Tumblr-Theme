@@ -3,15 +3,15 @@
     text-align: center;
     text-decoration: none;
 
-    background: $color-grey-mid;
-    transition: background, color;
+    background: $color-grey-dark;
+    transition: background;
     transition-duration: 350ms;
     cursor: pointer;
-    color: $color-white;
+    color: $color-grey-light;
 
-    .mousemove &:hover {
-      background: $color-yellow;
-      color: $color-black;
+    &:hover {
+      background: $color-grey;
+      // color: $color-grey;
     }
 }
 
@@ -28,6 +28,7 @@
 .PostPagination-postTitle {
 
   font-size: 2em;
+  font-weight: bold;
   line-height: 1.2em;
   margin-bottom: 3 * $spacing;
 
@@ -37,20 +38,5 @@
 
   @media #{$mq-large} {
     font-size: 3em;
-  }
-}
-
-.PostPagination-icon {
-  display: block;
-  font-size: 1.75em;
-  width: 32px;
-  margin: 0 auto;
-
-  svg {
-    transition: all 350ms;
-    stroke: $color-white;
-    .mousemove .PostPagination:hover & {
-      stroke: $color-grey-dark;
-    }
   }
 }
